@@ -10,20 +10,17 @@ import {
 	Table,
 	px,
 	ActionIcon,
-	Text,
 	Flex,
 	Button,
-	Pagination,
-	Loader,
 } from '@mantine/core';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import type { FC } from 'react';
-import { LOG_QUERY_LIMITS, useLogsPageContext } from './Context';
+import { useLogsPageContext } from './Context';
 import LogRow from './LogRow';
 import { useLogTableStyles } from './styles';
 import useMountedState from '@/hooks/useMountedState';
 import ErrorText from '@/components/Text/ErrorText';
-import { IconSelector, IconGripVertical, IconPin, IconPinFilled, IconSettings } from '@tabler/icons-react';
+import { IconGripVertical, IconPin, IconPinFilled, IconSettings } from '@tabler/icons-react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { Field } from '@/@types/parseable/dataType';
 import EmptyBox from '@/components/Empty';
@@ -54,7 +51,6 @@ const LogTable: FC = () => {
 		getDataSchema,
 		reorderSchemaFields,
 		resetData: resetStreamData,
-		loading,
 		error: logStreamSchemaError,
 	} = useGetLogStreamSchema();
 
@@ -63,7 +59,6 @@ const LogTable: FC = () => {
 		getColumnFilters,
 		setQuerySearch,
 		getQueryData,
-		loading: logsLoading,
 		error: logsError,
 		resetData: resetLogsData,
 		sort,
@@ -257,7 +252,6 @@ const LogTable: FC = () => {
 		tableStyle,
 		theadStyle,
 		errorContainer,
-		footerContainer,
 		theadStylePinned,
 		pinnedScrollView,
 	} = classes;
@@ -290,34 +284,22 @@ const LogTable: FC = () => {
 		<Box className={container}>
 			<Box>
 				<Button style={{ margin: '12px' }} variant="default" onClick={() => {
-					subGapTime.set({
-					    "startTime": dayjs().subtract(1, 'minute'),
-					    "endTime": dayjs()
-					})
+					subGapTime.set({"startTime": dayjs().subtract(1, 'minute').toDate(), "endTime": dayjs().toDate(), id: 1})
 				}}>
 					Last 1 minute
 				</Button>
 				<Button style={{ margin: '12px' }} variant="default" onClick={() => {
-					subGapTime.set({
-					    "startTime": dayjs().subtract(10, 'minute'),
-					    "endTime": dayjs()
-					})
+					subGapTime.set({"startTime": dayjs().subtract(10, 'minute').toDate(), "endTime": dayjs().toDate(), id: 1})
 				}}>
 					Last 10 minutes
 				</Button>
 				<Button style={{ margin: '12px' }} variant="default" onClick={() => {
-					subGapTime.set({
-					    "startTime": dayjs().subtract(1, 'hour'),
-					    "endTime": dayjs()
-					})
+					subGapTime.set({"startTime": dayjs().subtract(1, 'hour').toDate(), "endTime": dayjs().toDate(), id: 1})
 				}}>
 					Last hour
 				</Button>
 				<Button style={{ margin: '12px' }} variant="default" onClick={() => {
-					subGapTime.set({
-					    "startTime": dayjs().subtract(1, 'day'),
-					    "endTime": dayjs()
-					})
+					subGapTime.set({"startTime": dayjs().subtract(1, 'day').toDate(), "endTime": dayjs().toDate(), id: 1})
 				}}>
 					Last day
 				</Button>
@@ -538,59 +520,6 @@ const ThColumnMenu: FC<ThColumnMenuProps> = (props) => {
 				</DragDropContext>
 			</Menu>
 		</th>
-	);
-};
-
-type LimitControlProps = {
-	value: number;
-	onChange: (limit: number) => void;
-};
-
-const LimitControl: FC<LimitControlProps> = (props) => {
-	const { value, onChange } = props;
-
-	const [opened, setOpened] = useMountedState(false);
-
-	const toggle = () => {
-		setOpened(!opened);
-	};
-
-	const onSelect = (limit: number) => {
-		if (value !== limit) {
-			onChange(limit);
-		}
-	};
-
-	const { classes } = useLogTableStyles();
-	const { limitContainer, limitBtn, limitBtnText, limitActive, limitOption } = classes;
-
-	return (
-		<Box className={limitContainer}>
-			<Menu withArrow withinPortal shadow="md" opened={opened} onChange={setOpened}>
-				<Center>
-					<Menu.Target>
-						<Box onClick={toggle} className={limitBtn}>
-							<Text className={limitBtnText}>{value}</Text>
-							<IconSelector size={px('1rem')} />
-						</Box>
-					</Menu.Target>
-				</Center>
-				<Menu.Dropdown>
-					{LOG_QUERY_LIMITS.map((limit) => {
-						return (
-							<Menu.Item
-								className={limit === value ? limitActive : limitOption}
-								key={limit}
-								onClick={() => onSelect(limit)}>
-								<Center>
-									<Text>{limit}</Text>
-								</Center>
-							</Menu.Item>
-						);
-					})}
-				</Menu.Dropdown>
-			</Menu>
-		</Box>
 	);
 };
 

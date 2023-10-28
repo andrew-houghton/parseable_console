@@ -1,9 +1,8 @@
-import { SortOrder, type Log, type LogsData, type LogsQuery, type LogsSearch } from '@/@types/parseable/api/query';
+import { SortOrder, type Log, type LogsQuery, type LogsSearch } from '@/@types/parseable/api/query';
 import { getQueryLogs } from '@/api/query';
 import { StatusCodes } from 'http-status-codes';
 import useMountedState from './useMountedState';
-import { useCallback, useEffect, useMemo, useRef, useTransition } from 'react';
-import { LOG_QUERY_LIMITS } from '@/pages/Logs/Context';
+import { useCallback, useMemo, useRef } from 'react';
 import { parseLogData } from '@/utils';
 
 export const useSimpleQueryLogs = () => {
@@ -22,7 +21,6 @@ export const useSimpleQueryLogs = () => {
             order: SortOrder.DESCENDING,
         },
     });
-    const [isPending, startTransition] = useTransition();
 
     const data: Log[] | null = useMemo(() => {
         if (_dataRef.current) {
@@ -131,7 +129,7 @@ export const useSimpleQueryLogs = () => {
         getColumnFilters,
         sort: querySearch.sort,
         error,
-        loading: loading || isPending,
+        loading,
         getQueryData,
         resetData,
     };

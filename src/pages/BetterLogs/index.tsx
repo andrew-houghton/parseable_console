@@ -4,7 +4,6 @@ import { FC } from 'react';
 import LogTable from './LogTable';
 import { useLogsStyles } from './styles';
 import ViewLog from './ViewLog';
-import HeaderPagination from './HeaderPagination';
 
 const BetterLogs: FC = () => {
 	useDocumentTitle('Parseable | Better Logs');
