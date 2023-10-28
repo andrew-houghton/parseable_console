@@ -8,6 +8,7 @@ import {
 	IconLogout,
 	IconUser,
 	IconBinaryTree2,
+	IconJewishStar,
 	IconTableShortcut,
 	IconSettings,
 	IconTrash,
@@ -36,6 +37,7 @@ const baseURL = import.meta.env.VITE_PARSEABLE_URL ?? '/';
 
 const links = [
 	{ icon: IconZoomCode, label: 'Query', pathname: '/query', requiredAccess: ['Query', 'GetSchema'] },
+	{ icon: IconJewishStar, label: 'Better Logs', pathname: '/better-logs', requiredAccess: ['Query', 'GetSchema'] },
 	{ icon: IconTableShortcut, label: 'Logs', pathname: '/logs', requiredAccess: ['Query', 'GetSchema'] },
 	{ icon: IconReportAnalytics, label: 'Stats', pathname: '/stats', requiredAccess: ['GetStats'] },
 	{ icon: IconSettings, label: 'Config', pathname: '/config', requiredAccess: ['PutAlert'] },

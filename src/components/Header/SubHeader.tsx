@@ -79,6 +79,21 @@ export const LogsHeader: FC = () => {
 	);
 };
 
+export const BetterLogsHeader: FC = () => {
+	const { classes } = useLogQueryStyles();
+	const { container, innerContainer } = classes;
+
+	return (
+		<Box className={container}>
+			<Box>
+				<Box className={innerContainer}>
+					<HeaderBreadcrumbs crumbs={['Streams', 'streamName', 'Logs']} />
+				</Box>
+			</Box>
+		</Box>
+	);
+};
+
 export const ConfigHeader: FC = () => {
 	const { classes } = useLogQueryStyles();
 	const { container, innerContainer } = classes;

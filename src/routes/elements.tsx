@@ -1,4 +1,5 @@
 import Home from '@/pages/Home';
+import BetterLogsPageProvider from '@/pages/BetterLogs/Context';
 import LogsPageProvider from '@/pages/Logs/Context';
 import type { FC } from 'react';
 import { lazy } from 'react';
@@ -15,6 +16,18 @@ export const LoginElement: FC = () => {
 	return (
 		<SuspensePage>
 			<Login />
+		</SuspensePage>
+	);
+};
+
+const BetterLogs = lazy(() => import('@/pages/BetterLogs'));
+
+export const BetterLogsElement: FC = () => {
+	return (
+		<SuspensePage>
+			<BetterLogsPageProvider>
+				<BetterLogs />
+			</BetterLogsPageProvider>
 		</SuspensePage>
 	);
 };

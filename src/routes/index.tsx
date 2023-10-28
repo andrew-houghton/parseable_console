@@ -4,6 +4,7 @@ import {
 	HOME_ROUTE,
 	LOGIN_ROUTE,
 	LOGS_ROUTE,
+	BETTER_LOGS_ROUTE,
 	OIDC_NOT_CONFIGURED_ROUTE,
 	QUERY_ROUTE,
 	STATS_ROUTE,
@@ -18,6 +19,7 @@ import {
 	HomeElement,
 	LoginElement,
 	LogsElement,
+	BetterLogsElement,
 	QueryElement,
 	MainLayoutElement,
 	StatsElement,
@@ -42,6 +44,7 @@ const AppRouter: FC = () => {
 						</Route>
 
 						<Route element={<AccessSpecificRoute accessRequired={['Query', 'GetSchema']} />}>
+							<Route path={BETTER_LOGS_ROUTE} element={<BetterLogsElement />} />
 							<Route path={LOGS_ROUTE} element={<LogsElement />} />
 							<Route path={QUERY_ROUTE} element={<QueryElement />} />
 						</Route>

@@ -2,8 +2,8 @@ import type { HeaderProps as MantineHeaderProps } from '@mantine/core';
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HeaderLayout from './Layout';
-import { ConfigHeader, LogsHeader, QueryHeader, StatsHeader, UsersManagementHeader } from './SubHeader';
-import { CONFIG_ROUTE, LOGS_ROUTE, QUERY_ROUTE, STATS_ROUTE, USERS_MANAGEMENT_ROUTE } from '@/constants/routes';
+import { ConfigHeader, LogsHeader, QueryHeader, StatsHeader, UsersManagementHeader, BetterLogsHeader } from './SubHeader';
+import { CONFIG_ROUTE, LOGS_ROUTE, QUERY_ROUTE, STATS_ROUTE, USERS_MANAGEMENT_ROUTE, BETTER_LOGS_ROUTE } from '@/constants/routes';
 
 type SecondaryHeaderProps = Omit<MantineHeaderProps, 'children' | 'height' | 'className'>;
 
@@ -11,6 +11,7 @@ const SecondaryHeader: FC<SecondaryHeaderProps> = (props) => {
 	return (
 		<Routes>
 			<Route element={<HeaderLayout {...props} />}>
+				<Route path={BETTER_LOGS_ROUTE} element={<BetterLogsHeader />} />
 				<Route path={LOGS_ROUTE} element={<LogsHeader />} />
 				<Route path={QUERY_ROUTE} element={<QueryHeader />} />
 				<Route path={STATS_ROUTE} element={<StatsHeader />} />

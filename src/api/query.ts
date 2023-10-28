@@ -5,7 +5,7 @@ import { LogsQuery } from '@/@types/parseable/api/query';
 export const getQueryLogs = (logsQuery: LogsQuery) => {
 	const { startTime, endTime, streamName } = logsQuery;
 
-	const query = `SELECT * FROM ${streamName}`;
+	const query = `SELECT * FROM ${streamName} LIMIT 5000`;
 
 	return Axios().post(
 		LOG_QUERY_URL,
