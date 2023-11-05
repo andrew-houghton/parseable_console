@@ -52,7 +52,6 @@ const ViewLog: FC = () => {
 					<DataChip title="Meta Data" dataList={p_metadata} />
 					<DataChip title="Tags" dataList={p_tags} />
 					<Divider label={'Logger Message'} variant="dashed" labelPosition="center" my="lg" />
-					
 					<Prism
 						copyLabel="Copy"
 						language="json"
@@ -62,7 +61,22 @@ const ViewLog: FC = () => {
 						>
 						{JSON.stringify(log, null, 2)}
 					</Prism>
-					
+				</Box>
+			)}
+
+
+			{Boolean(log?.exc_text) && (
+				<Box className={container}>
+					<Divider label={'Stack Trace'} variant="dashed" labelPosition="center" my="lg" />
+					<Prism
+						copyLabel="Copy"
+						language="py"
+						withLineNumbers
+						sx={{overflow: 'auto' }}
+						scrollAreaComponent={ScrollArea}
+						>
+						{log.exc_text}
+					</Prism>
 				</Box>
 			)}
 		</Drawer>

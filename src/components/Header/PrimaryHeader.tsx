@@ -1,4 +1,4 @@
-import logoInvert from '@/assets/images/brand/logo-invert.svg';
+import logoInvert from '@/assets/images/nyan-cat.gif';
 import { HOME_ROUTE } from '@/constants/routes';
 import { HEADER_HEIGHT } from '@/constants/theme';
 import type { HeaderProps as MantineHeaderProps } from '@mantine/core';
@@ -15,8 +15,8 @@ const PrimaryHeader: FC<PrimaryHeaderProps> = (props) => {
 	return (
 		<MantineHeader {...props} className={container} height={HEADER_HEIGHT} p={0} withBorder>
 			<Box className={logoContainer}>
-				<a href={HOME_ROUTE}>
-					<Image className={imageSty} src={logoInvert} height={32} alt="Parseable Logo" />
+				<a href={HOME_ROUTE} style={{margin: '16px'}}>
+					<Image className={imageSty} src={logoInvert} height={160} alt="Parseable Logo" />
 				</a>
 			</Box>
 		</MantineHeader>

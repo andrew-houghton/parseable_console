@@ -12,7 +12,7 @@ const BetterLogs: FC = () => {
 	const { container } = classes;
 
 	return (
-		<Box className={container}>
+		<Box className={container} style={{marginRight: '32px'}}>
 			<LogTable />
 			<ViewLog />
 		</Box>
