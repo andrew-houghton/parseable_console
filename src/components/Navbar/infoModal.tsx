@@ -7,12 +7,6 @@ import { useHeaderContext } from '@/layouts/MainLayout/Context';
 
 const helpResources = [
 	{
-		icon: IconBusinessplan,
-		title: 'Production support',
-		description: 'Get production support',
-		href: 'mailto:sales@parseable.io?subject=Production%20Support%20Query', //https://www.parseable.io/pricing
-	},
-	{
 		icon: IconBrandSlack,
 		title: 'Slack',
 		description: 'Join the Slack community',
@@ -114,20 +108,6 @@ const InfoModal: FC<InfoModalProps> = (props) => {
 					<Text className={aboutDescription}>Loading...</Text>
 				) : data ? (
 					<>
-						<Box className={aboutTextBox}>
-							<Box className={aboutTextInnerBox}>
-								<Text className={aboutTextKey}> License: </Text>
-								<Text className={aboutTextValue}> {data.license} </Text>
-								<Button
-									variant="outline"
-									component={'a'}
-									href="mailto:sales@parseable.io?subject=Production%20Support%20Query"
-									target="_blank"
-									className={actionBtn}>
-									Upgrade to production support
-								</Button>
-							</Box>
-						</Box>
 						<Box className={aboutTextBox}>
 							<Box className={aboutTextInnerBox}>
 								<Text className={aboutTextKey}> Commit: </Text>

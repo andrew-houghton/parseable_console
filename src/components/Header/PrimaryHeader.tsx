@@ -19,28 +19,6 @@ const PrimaryHeader: FC<PrimaryHeaderProps> = (props) => {
 					<Image className={imageSty} src={logoInvert} height={32} alt="Parseable Logo" />
 				</a>
 			</Box>
-			<Box className={navContainer}>
-				<Box
-					display={'flex'}
-					sx={{
-						justifyContent: 'flex-end',
-						alignItems: 'center',
-						width: '100%',
-						paddingLeft: '1rem',
-					}}
-					pr={'xl'}>
-					<Tooltip label="Upgrade to production support" position="bottom">
-						<Button
-							variant="outline"
-							component={'a'}
-							href="mailto:sales@parseable.io?subject=Production%20Support%20Query"
-							target="_blank"
-							className={actionBtn}>
-							<Image height={30} fit="fill" src={'/AGPLv3_Logo.svg'} />
-						</Button>
-					</Tooltip>
-				</Box>
-			</Box>
 		</MantineHeader>
 	);
 };
