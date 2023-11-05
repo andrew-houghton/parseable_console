@@ -2,7 +2,7 @@ import { Box, Button, Modal, Text, Tooltip, px } from '@mantine/core';
 import { FC, useEffect, useMemo } from 'react';
 import { useInfoModalStyles } from './styles';
 import { useGetAbout } from '@/hooks/useGetAbout';
-import { IconAlertCircle, IconBook2, IconBrandGithub, IconBrandSlack, IconBusinessplan } from '@tabler/icons-react';
+import { IconAlertCircle, IconBook2, IconBrandGithub, IconBrandSlack } from '@tabler/icons-react';
 import { useHeaderContext } from '@/layouts/MainLayout/Context';
 
 const helpResources = [
@@ -86,7 +86,6 @@ const InfoModal: FC<InfoModalProps> = (props) => {
 		container,
 		aboutTitle,
 		aboutDescription,
-		actionBtn,
 		helpIconContainer,
 		aboutTextBox,
 		aboutTextKey,

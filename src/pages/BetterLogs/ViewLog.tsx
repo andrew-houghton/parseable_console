@@ -70,12 +70,12 @@ const ViewLog: FC = () => {
 					<Divider label={'Stack Trace'} variant="dashed" labelPosition="center" my="lg" />
 					<Prism
 						copyLabel="Copy"
-						language="py"
+						language="python"
 						withLineNumbers
 						sx={{overflow: 'auto' }}
 						scrollAreaComponent={ScrollArea}
 						>
-						{log.exc_text}
+						{(log?.exc_text || '').toString()}
 					</Prism>
 				</Box>
 			)}
