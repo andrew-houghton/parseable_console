@@ -44,7 +44,7 @@ const LogRow: FC<LogRowProps> = (props) => {
 							if (!isColumnActive(logSchema.name) || skipFields.includes(logSchema.name)) return null;
 
 							return (
-								<td key={`${logSchema.name}-${logSchemaIndex}`}>{parseLogData(log[logSchema.name], logSchema.name)}</td>
+								<td key={`${logSchema.name}-${logSchemaIndex}`} style={{maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis'}}>{parseLogData(log[logSchema.name], logSchema.name)}</td>
 							);
 						})}
 						{

@@ -114,6 +114,7 @@ const Column: FC<Column> = (props) => {
 			height: "42px",
 			padding:0,
 			textAlign: 'left',
+			maxWidth: '200px',
 		}}>
 			<Popover position="bottom" withArrow withinPortal shadow="md" zIndex={2} onOpen={onOpen}>
 				<Popover.Target>
